@@ -1,9 +1,11 @@
 import express from "express"
-
+import CORS from "cors"
 
 const app = express()
 
-const port = 3001;
+app.use(CORS())
+
+const port = 3002;
 
 app.get("/", (req, res) => {
     res.send("server Running,..")
