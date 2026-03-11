@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
-import { prisma } from "./prisma";
+import { prisma } from "./prisma.js";
 import "dotenv/config"
+
 
 // better auth instance connected to prisma database
 export const auth = betterAuth(
