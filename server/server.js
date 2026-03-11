@@ -1,6 +1,6 @@
 import express from "express"
 import CORS from "cors"
-import { auth } from "./src/lib/auth.js"
+import { auth } from "./src/lib/auth.ts"
 import { toNodeHandler } from "better-auth/node";
 
 const app = express()
@@ -9,7 +9,7 @@ app.use(CORS())
 
 const port = 3002;
 
-app.all("/api/auth/*", toNodeHandler(auth)); // connect every routh to auth instance
+app.all("/^\/api\/auth\/.*/", toNodeHandler(auth)); // connect every routh to auth instance
 
 app.use(express.json())
 
