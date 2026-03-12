@@ -9,7 +9,7 @@ app.use(CORS())
 
 const port = 3002;
 
-app.all("api/auth/*", toNodeHandler(auth)); // connect every routh to auth instance
+app.all("api/auth/*all", toNodeHandler(auth)); // connect every routh to auth instance
 
 app.use(express.json())
 
