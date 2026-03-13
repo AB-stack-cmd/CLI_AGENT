@@ -6,10 +6,12 @@ export default function SignInPage() {
 
 
   return (
-    <div className=" bg-transparent flex justify-center flex-col items-center ">
-      <h1>
+    <div className=" items-center flex justify-center p-6">
+    <div className="   p-30 flex justify-center  items-center cneter ">
+     
         <LoginForm />
-      </h1>
+   
+    </div>
     </div>
   )
 }

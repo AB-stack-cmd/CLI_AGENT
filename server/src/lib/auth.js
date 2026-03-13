@@ -1,26 +1,28 @@
-import { betterAuth } from "better-auth";
-import { prisma } from "./prisma.js";
-import { prismaAdapter } from "@better-auth/prisma-adapter";
-import "dotenv/config";
+import { betterAuth } from "better-auth"
+import { prismaAdapter } from "@better-auth/prisma-adapter"
+import { prisma } from "../../db.js"
 
 export const auth = betterAuth({
-  database:
-    prismaAdapter(prisma, {}),
+
+  database: prismaAdapter(prisma),
 
   emailAndPassword: {
-    enabled: true,
+    enabled: true
   },
 
   session: {
-    expiresIn: 60 * 60 * 24 * 7,
+    expiresIn: 60 * 60 * 24 * 7
   },
 
-  trustedOrigins: ["http://localhost:3000"],
+  trustedOrigins: [
+    "http://localhost:3000"
+  ],
 
   socialProviders: {
     github: {
       clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    },
-  },
-});
+      clientSecret: process.env.GITHUB_CLIENT_SECRET
+    }
+  }
+
+})

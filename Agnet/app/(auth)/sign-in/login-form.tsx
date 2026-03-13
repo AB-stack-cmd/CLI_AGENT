@@ -15,8 +15,9 @@ import { authClient } from "@/lib/auth-clinet"
 
 export default function LoginForm() {
   return (
-    <Card className="w-full  max-w-sm">
-      <CardHeader>
+    <div className=" ">
+    <Card className="w-full p-4  max-w-full">
+      <CardHeader className="">
         <CardTitle>Login to your account</CardTitle>
         <CardDescription>
           Enter your email below to login to your account
@@ -52,7 +53,7 @@ export default function LoginForm() {
           </div>
         </form>
       </CardContent>
-      <CardFooter className="flex-col gap-2">
+      <CardFooter className="flex-col  gap-2 ">
         <Button type="submit" className="w-full">
           Login
         </Button>
@@ -68,5 +69,6 @@ export default function LoginForm() {
         </Button>
       </CardFooter>
     </Card>
+    </div>
   )
 }

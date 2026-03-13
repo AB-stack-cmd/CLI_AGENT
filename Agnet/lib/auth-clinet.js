@@ -4,4 +4,7 @@ import { createAuthClient } from "better-auth/client";
     also connected with server route*/
 export const authClient = createAuthClient({
     baseURL: "http://localhost:3002",
+    fetchOptions: {
+        credentials: "include"
+    }
 })
