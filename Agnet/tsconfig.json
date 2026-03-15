@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "lib/auth-clinet.js"  ],
+, "lib/auth-clinet.ts"  ],
   "exclude": ["node_modules"]
 }

@@ -4,48 +4,41 @@ generator client {
 
 datasource db {
   provider = "postgresql"
- 
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
+  id        String    @id @default(cuid())
+  email     String    @unique
   password  String?
   name      String?
   image     String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  sessions  Session[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   accounts  Account[]
+  sessions  Session[]
 }
 
 model Session {
   id        String   @id @default(cuid())
   expiresAt DateTime
   token     String   @unique
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  userId String
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Account {
-  id                String @id @default(cuid())
+  id                String    @id @default(cuid())
   accountId         String
   providerId        String
   userId            String
   accessToken       String?
   refreshToken      String?
   accessTokenExpiry DateTime?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Verification {
@@ -53,7 +46,6 @@ model Verification {
   identifier String
   value      String
   expiresAt  DateTime
-
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }

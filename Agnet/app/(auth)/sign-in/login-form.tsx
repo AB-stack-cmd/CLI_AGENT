@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
+
 import {
   Card,
   CardAction,
@@ -14,8 +16,10 @@ import Image from "next/image"
 import { authClient } from "@/lib/auth-clinet"
 
 export default function LoginForm() {
+  const route =useRouter()
   return (
     <div className=" ">
+      <button onClick={()=> route.push("/")}> home </button>
     <Card className="w-full p-4  max-w-full">
       <CardHeader className="">
         <CardTitle>Login to your account</CardTitle>
