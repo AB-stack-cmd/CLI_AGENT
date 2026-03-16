@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Reset / Base ── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #0a0a0a;
+    color: #f0ede8;
+    font-family: 'DM Sans', sans-serif;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+}
+
+/* ── Subtle grid background ── */
+.grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(240, 237, 232, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240, 237, 232, 0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Layout ── */
+.container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ── Left panel ── */
+.left {
+    width: 42%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 56px;
+    border-right: 1px solid rgba(240, 237, 232, 0.07);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logoMark {
+    font-size: 18px;
+    color: #c8b99a;
+    line-height: 1;
+}
+
+.logoText {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #f0ede8;
+}
+
+.tagline {
+    user-select: none;
+}
+
+.taglineSmall {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240, 237, 232, 0.4);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+}
+
+.taglineLarge {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(52px, 6vw, 88px);
+    line-height: 0.9;
+    color: #f0ede8;
+    letter-spacing: -0.02em;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 12px;
+    color: rgba(240, 237, 232, 0.3);
+    font-weight: 300;
+}
+
+.link {
+    color: rgba(240, 237, 232, 0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.link:hover {
+    color: rgba(240, 237, 232, 0.7);
+}
+
+/* ── Right panel ── */
+.right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 56px;
+}
+
+.formWrapper {
+    width: 100%;
+    max-width: 380px;
+    animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Form header ── */
+.formHeader {
+    margin-bottom: 44px;
+}
+
+.heading {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #f0ede8;
+    margin-bottom: 10px;
+}
+
+.subheading {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240, 237, 232, 0.45);
+}
+
+.linkInline {
+    color: #c8b99a;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.linkInline:hover {
+    color: #e0d4c0;
+}
+
+/* ── Form fields ── */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 28px;
+}
+
+.field {
+    position: relative;
+}
+
+.label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 232, 0.35);
+    margin-bottom: 10px;
+    transition: color 0.2s;
+}
+
+.fieldFocused .label {
+    color: #c8b99a;
+}
+
+.input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #f0ede8;
+    padding: 0 0 12px 0;
+    caret-color: #c8b99a;
+}
+
+.input::placeholder {
+    color: rgba(240, 237, 232, 0.18);
+}
+
+.fieldLine {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(240, 237, 232, 0.1);
+    transition: background 0.2s;
+}
+
+.fieldLine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #c8b99a;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fieldFocused .fieldLine::after {
+    transform: scaleX(1);
+}
+
+/* ── Submit button ── */
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 28px;
+    background: #f0ede8;
+    color: #0a0a0a;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.button:hover {
+    background: #e8e3dc;
+    transform: translateY(-1px);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+/* ── Terms ── */
+.terms {
+    font-size: 12px;
+    color: rgba(240, 237, 232, 0.25);
+    font-weight: 300;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* ── Success state ── */
+.successWrapper {
+    text-align: center;
+    animation: fadeUp 0.5s ease both;
+}
+
+.successIcon {
+    width: 56px;
+    height: 56px;
+    border: 1px solid rgba(200, 185, 154, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #c8b99a;
+    margin: 0 auto 28px;
+}
+
+.successHeading {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: #f0ede8;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.successText {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(240, 237, 232, 0.45);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left {
+        width: 100%;
+        padding: 36px 32px 32px;
+        border-right: none;
+        border-bottom: 1px solid rgba(240, 237, 232, 0.07);
+        min-height: auto;
+    }
+
+    .taglineLarge {
+        font-size: 52px;
+    }
+
+    .meta {
+        display: none;
+    }
+
+    .right {
+        padding: 48px 32px;
+    }
+
+    .formWrapper {
+        max-width: 100%;
+    }
+}

@@ -1,6 +1,7 @@
 "use client"
 import  LoginForm  from "./login-form"
 import { useRouter } from "next/navigation"
+import { authClient } from "@/lib/auth-clinet"
 
 export default function SignInPage() {
 

@@ -19,7 +19,7 @@ export default function LoginForm() {
   const route =useRouter()
   return (
     <div className=" ">
-      <button onClick={()=> route.push("/")}> home </button>
+
     <Card className="w-full p-4  max-w-full">
       <CardHeader className="">
         <CardTitle>Login to your account</CardTitle>
@@ -27,7 +27,7 @@ export default function LoginForm() {
           Enter your email below to login to your account
         </CardDescription>
         <CardAction>
-          <Button variant="link">Sign Up</Button>
+          <Button variant="link" onClick={()=> route.push("/sign-up")}>Sign Up</Button>
         </CardAction>
       </CardHeader>
       <CardContent>
