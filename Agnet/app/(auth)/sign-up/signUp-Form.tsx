@@ -14,10 +14,12 @@ export default function SignUpForm() {
 
     
   const [focused, setFocused]     = useState<string | null>(null);
-  const [values, setValues]       = useState({ name: "", email: "", password: "" });
+  const [values, setValues]       = useState({ name: "", email: "", password: "" }); // setting values 
   const [submitted, setSubmitted] = useState(false);
 
+  // function to change setSubmit true
   const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  // handles form data change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValues({ ...values, [e.target.name]: e.target.value });
 

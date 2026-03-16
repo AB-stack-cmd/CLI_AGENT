@@ -1,8 +1,10 @@
 
 export default function authSignUp({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+  <div>
       {children}
-    </html>
+  </div>
+    
+  
   );
 }

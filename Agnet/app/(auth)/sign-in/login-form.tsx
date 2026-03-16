@@ -10,69 +10,92 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Image from "next/image"
 import { authClient } from "@/lib/auth-clinet"
 
 export default function LoginForm() {
-  const route =useRouter()
-  return (
-    <div className=" ">
+  const route = useRouter()
 
-    <Card className="w-full p-4  max-w-full">
-      <CardHeader className="">
-        <CardTitle>Login to your account</CardTitle>
-        <CardDescription>
-          Enter your email below to login to your account
-        </CardDescription>
-        <CardAction>
-          <Button variant="link" onClick={()=> route.push("/sign-up")}>Sign Up</Button>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
-        <form>
-          <div className="flex flex-col gap-6 ">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <a
-                  href="#"
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                >
-                  Forgot your password?
-                </a>
+  return (
+    <div className="flex items-center  justify-center  min-h-screen">
+      <Card className="w-[400px] p-4 ">
+        <CardHeader >
+          <CardTitle>Login to your account</CardTitle>
+          <CardDescription>
+            Enter your email below to login to your account
+          </CardDescription>
+
+          <CardAction>
+            <Button variant="link" onClick={() => route.push("/sign-up")}>
+              Sign Up
+            </Button>
+          </CardAction>
+        </CardHeader>
+
+        <CardContent>
+          <form>
+            <div className="flex flex-col gap-6">
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="m@example.com"
+                  required
+                />
               </div>
-              <Input id="password" type="password" required />
+
+              <div className="grid gap-2">
+                <div className="flex items-center gap-50">
+                  <Label htmlFor="password">Password</Label>
+
+                  <a
+                    href="#"
+                    className="ml-auto text-sm underline-offset-4 hover:underline"
+                  >
+                    Forgot your password?
+                  </a>
+                </div>
+
+                <Input id="password" type="password" required />
+              </div>
             </div>
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex-col  gap-2 ">
-        <Button type="submit" className="w-full">
-          Login
-        </Button>
-        <Button variant="outline" className="w-full">
-          Login with Google
-        </Button>
-        <Button variant="outline" className="w-full" type="button"
-         onClick={()=> authClient.signIn.social({
-          provider:"github",
-          callbackURL:"http://localhost:3000"
-         })}>
-          Login with GitHub <Image src={"D:\.vscode\cliProject\Agnet\app\github_3.svg"} width={16} height={16} alt="Github"/>
-        </Button>
-      </CardFooter>
-    </Card>
+          </form>
+        </CardContent>
+
+        <CardFooter className="flex-col gap-2">
+          <Button type="submit" className="w-full">
+            Login
+          </Button>
+
+          <Button variant="outline" className="w-full">
+            Login with Google
+          </Button>
+
+          <Button
+            variant="outline"
+            className="w-full flex items-center gap-2"
+            type="button"
+            onClick={() =>
+              authClient.signIn.social({
+                provider: "github",
+                callbackURL: "http://localhost:3000",
+              })
+            }
+          >
+            Login with GitHub
+            <Image
+              src="/github.svg"
+              width={16}
+              height={16}
+              alt="Github"
+            />
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   )
 }
